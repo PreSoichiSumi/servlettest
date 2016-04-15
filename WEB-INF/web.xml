@@ -14,4 +14,15 @@
     <url-pattern>/helloworld</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>cookieservlet</servlet-name>
+    <servlet-class>CookieServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>cookieservlet</servlet-name>
+    <url-pattern>/cookietest</url-pattern>
+  </servlet-mapping>
+
+
+
 </web-app>

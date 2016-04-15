@@ -39,20 +39,34 @@ public class CookieServlet extends HttpServlet{
         out.println("<h1>Hello World!</h1>");
 
 
-        Cookie cookie[]=request.getCookies();
+        Cookie cookie[]=request.getCookies();//cookieはKeyValueな感じで格納される
         Cookie visitedCookie=null;
 
         if(cookie !=null) {
             for(Cookie c:cookie){
-                if(Objects.equals(c.getName(),"visited")
+                if(Objects.equals(c.getName(),"visited")){
+                    visitedCookie=c;
+                }
             }
-            out.println("<h2>CookieCount=" + count + "</h2>");
+            if(visitedCookie!=null) {
+                int visited=Integer.parseInt(visitedCookie.getValue())+1;
+                out.println("<h2>CookieCount=" + visited + "</h2>");
+
+                visitedCookie.setValue(Integer.toString(visited));
+                response.addCookie(visitedCookie);
+
+            }else{
+                out.println("初回の訪問DA．他にも何かある");
+                Cookie newCookie=new Cookie("visited","1");
+                response.addCookie(newCookie);
+            }
         }else{
             out.println("初回の訪問DA");
             Cookie newCookie=new Cookie("visited","1");
             response.addCookie(newCookie);
         }
 
+        out.println("<a href=\"/hello/cookietest\">再表示</a>");
 
         out.println("reqURI"+request.getRequestURI());
         out.println("reqURL"+request.getRequestURL());
