@@ -49,6 +49,7 @@ public class SessionServlet extends HttpServlet {
             session.setAttribute("hoge", "hage");
             session.setAttribute("num", "fuga");
         } else {
+            session.setMaxInactiveInterval(MAX_AGE);
             String visitedStr = (String) session.getAttribute("visited");
             int visited = Integer.parseInt(visitedStr);
             visited++;
