@@ -41,4 +41,13 @@
         <url-pattern>/remove</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>db</servlet-name>
+        <servlet-class>DBServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>db</servlet-name>
+        <url-pattern>/dbtest</url-pattern>
+    </servlet-mapping>
+
 </web-app>
