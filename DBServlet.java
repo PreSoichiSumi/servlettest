@@ -52,28 +52,15 @@ public class DBServlet extends HttpServlet {
             out.println("<br>");
             out.println(" (⌒,_ゝ⌒)いくぜぇ、おらおらおら！！、手加減は無しだ･･･サイクロン！あばよクソ野郎が･･･、トルネードスラァッシュ！！<br><br>");
 
-            String sql = "insert into kabukatable (code, company) values (91,'すみ製作所')";
             Statement stmt = conn.createStatement();
 
-            out.println("挿入前<br>");
+            String sql="insert into kabukatable (code, company) values (?,?)";
+            PreparedStatement ps= conn.prepareStatement(sql);
+            ps.setInt(1,23984);
+            ps.setString(2,"バケスロソーダは厨武器");
+            ps.executeUpdate();
+            out.println("preparedでinsert<br>");
             showData(out,stmt);
-            stmt.executeUpdate(sql);
-            String sql2 = "insert into kabukatable (code, company) values (297,'サイクロン')";
-            stmt.executeUpdate(sql2);
-
-            out.println("挿入あと<br>");
-            showData(out, stmt);
-
-            out.println("削除<br>");
-            sql="delete from kabukatable where code = 297";
-            stmt.executeUpdate(sql);
-            showData(out, stmt);
-
-            out.println("更新<br>");
-            sql="update kabukatable set company = 'もこうソリューション' where code = 91";
-            stmt.executeUpdate(sql);
-            showData(out, stmt);
-
 
         } catch (ClassNotFoundException e) {
             out.println("ClassNotFoundException:" + e.getMessage());
