@@ -5,6 +5,15 @@
    http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
   version="2.4">
 
+    <filter>
+        <filter-name>testfilter</filter-name>
+        <filter-class>TestFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>testfilter</filter-name>
+        <url-pattern>/filter</url-pattern>
+    </filter-mapping>
+
     <servlet>
         <servlet-name>myservlet</servlet-name>
         <servlet-class>MyServlet</servlet-class>
@@ -50,4 +59,15 @@
         <url-pattern>/dbtest</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>filterman</servlet-name>
+        <servlet-class>FTestServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>filterman</servlet-name>
+        <url-pattern>/filter</url-pattern>
+    </servlet-mapping>
+
+
+    
 </web-app>
