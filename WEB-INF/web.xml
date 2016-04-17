@@ -68,6 +68,23 @@
         <url-pattern>/filter</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>bauth1</servlet-name>
+        <servlet-class>BAuth1</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>bauth1</servlet-name>
+        <url-pattern>/authtest1</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>bauth2</servlet-name>
+        <servlet-class>BAuth2</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>bauth2</servlet-name>
+        <url-pattern>/authtest2</url-pattern>
+    </servlet-mapping>
 
     
 </web-app>
