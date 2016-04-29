@@ -5,6 +5,7 @@ import java.io.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
+import java.util.Objects;
 
 //入力された値が正しいかチェック
 public class LoginCheck extends HttpServlet {
@@ -51,7 +52,8 @@ public class LoginCheck extends HttpServlet {
         if (check) {
             session.setAttribute("login", "OK");
 
-            String target = (String) session.getAttribute("target");
+            Object tmp=session.getAttribute("target");
+            String target = tmp==null ? "/hello/" :(String)tmp;
             response.sendRedirect(target);
         } else {
             session.setAttribute("status", "Not Auth");
@@ -72,11 +74,16 @@ public class LoginCheck extends HttpServlet {
             pstmt.setString(2,pass);
             ResultSet rs =pstmt.executeQuery();
 
-            if(rs.next()){
-                return true;
-            }else{
-                return false;
+            while(rs.next()){
+                String resUser=rs.getString(1);
+                String resPass=rs.getString(2);
+                if(Objects.equals(user,resUser)
+                        && Objects.equals(pass,resPass))
+                    return true;
             }
+
+            return false;
+
         }catch (SQLException e){
             log("SQLException:" + e.getMessage());
             return false;
