@@ -114,6 +114,15 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>lcheck</servlet-name>
+        <servlet-class>LoginCheck</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>lcheck</servlet-name>
+        <url-pattern>/logincheck</url-pattern>
+    </servlet-mapping>
+
 
 
     <!-- 以下認証関係-->

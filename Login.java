@@ -25,18 +25,33 @@ public class Login extends HttpServlet {
 
         out.println("<h1>ログイン画面</h1>");
 
-        out.println("<p>本来はここでログインするためのフォームが表示されます</p>");
-
         HttpSession session = request.getSession(false);
-        if (session == null) {
-            out.println("<p>不正なアクセスです．</p>");
-        } else {
-            out.println("<p>認証が行われました</p>");
-            session.setAttribute("login", "OK");
 
-            String target = (String) session.getAttribute("target");
-            out.println("<a href=\"" + target + "\">ページを表示する</a>");
+        Object status=session.getAttribute("status");
+
+        if(status != null){
+            out.println("<p>認証に失敗しました</p>");
+            out.println("<p>再度ユーザ名とパスワードを入力してください．</p>");
+            session.setAttribute("status",null);
         }
+
+        out.println("<form method=\"POST\" action=\"/hello/logincheck\" name=\"loginform\">");
+        out.println("<table>");
+        out.println("<tr>");
+        out.println("<td>ユーザー名</td>");
+        out.println("<td><input type=\"text\" name=\"user\" size=\"32\"></td>");
+        out.println("</tr>");
+        out.println("<tr>");
+        out.println("<td>パスワード</td>");
+        out.println("<td><input type=\"password\" name=\"pass\" size=\"32\"></td>");
+        out.println("</tr>");
+        out.println("<tr>");
+        out.println("<td><input type=\"submit\" value=\"login\"></td>");
+        out.println("<td><input type=\"reset\" value=\"reset\"></td>");
+        out.println("</tr>");
+        out.println("</table>");
+        out.println("</form>");
+
         out.println("</body>");
         out.println("</html>");
 

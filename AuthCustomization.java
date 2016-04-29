@@ -24,7 +24,7 @@ public class AuthCustomization extends HttpServlet{
             session=request.getSession(true);
             session.setAttribute("target",target);
 
-            response.sendRedirect("/hello/authlogin");
+            response.sendRedirect("/hello/login");
 
         }
         else{
