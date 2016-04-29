@@ -25,7 +25,7 @@ public class Login extends HttpServlet {
 
         out.println("<h1>ログイン画面</h1>");
 
-        HttpSession session = request.getSession(false);
+        HttpSession session = request.getSession(true);
 
         Object status=session.getAttribute("status");
 

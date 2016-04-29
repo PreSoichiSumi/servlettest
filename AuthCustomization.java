@@ -45,6 +45,7 @@ public class AuthCustomization extends HttpServlet{
         out.println("<p>テストページ1</p>");
 
         out.println("<p><a href=\"/hello/customauth2\">テストページ2へ</a></p>");
+        out.println("<p><a href=\"/hello/logout\">ログアウト</a></p>");
 
         out.println("</body>");
         out.println("</html>");
