@@ -14,6 +14,19 @@
         <url-pattern>/filter</url-pattern>
     </filter-mapping>
 
+    <filter>
+        <filter-name>authfilter</filter-name>
+        <filter-class>MyAuthFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>authfilter</filter-name>
+        <url-pattern>/filterauth1</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>authfilter</filter-name>
+        <url-pattern>/filterauth2</url-pattern>
+    </filter-mapping>
+
     <servlet>
         <servlet-name>myservlet</servlet-name>
         <servlet-class>MyServlet</servlet-class>
@@ -132,6 +145,25 @@
         <servlet-name>logout</servlet-name>
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>filteredauth</servlet-name>
+        <servlet-class>AuthFilteredServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>filteredauth</servlet-name>
+        <url-pattern>/filterauth1</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>filteredauth2</servlet-name>
+        <servlet-class>AuthFilteredServlet2</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>filteredauth2</servlet-name>
+        <url-pattern>/filterauth2</url-pattern>
+    </servlet-mapping>
+
 
 
 
